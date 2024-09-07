@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/transfer")
+
 public class TransferController {
 
     private final TransferService transferService;
@@ -18,7 +18,7 @@ public class TransferController {
         this.transferService = transferService;
     }
 
-    @PostMapping
+    @PostMapping("/transfer")
     public ResponseEntity<?> transferMoney(@RequestBody TransferRequest request) {
         String operationId = transferService.transferMoney(request);
         return ResponseEntity.ok().body("{\"operationId\": \"" + operationId + "\"}");
